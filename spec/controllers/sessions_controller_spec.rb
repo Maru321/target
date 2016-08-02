@@ -9,7 +9,7 @@ describe Api::V1::SessionsController do
 
   describe 'create' do
     before :each do
-      @user = FactoryGirl.create(:user, password: 'mypass123')
+      @user = create(:user, password: 'mypass123')
       @params = {
         email:        @user.email,
         password:     'mypass123'
@@ -43,8 +43,8 @@ describe Api::V1::SessionsController do
 
   describe "POST 'facebook_login'" do
     before :each do
-      @user = FactoryGirl.create(:user)
-      @fb_user = FactoryGirl.create(:user_with_fb)
+      @user = create :user
+      @fb_user = create :user_with_fb
       @params = {
           facebook_id:    '1234567890',
           first_name:     'test',
@@ -73,11 +73,11 @@ describe Api::V1::SessionsController do
     end
 
     context 'with invalid params' do
-      it 'should not create an user on empty data' do
+      it 'should not create a user on empty data' do
         expect { post :create, user: {type: 'facebook'} , format: 'json' }.not_to change { User.count }
       end
 
-      it 'should not create an user on bad data' do
+      it 'should not create a user on bad data' do
         expect { post :create, user: { facebook_id: '', first_name: 'some', type: 'facebook' } , format: 'json' }.not_to change { User.count }
       end
     end

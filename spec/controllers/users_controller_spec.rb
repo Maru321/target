@@ -6,12 +6,12 @@ describe Api::V1::UsersController do
   render_views
 
   before(:each) do
-    @user = FactoryGirl.create(:user)
-    @friend = FactoryGirl.create(:user)
+    @user = create :user
+    @friend = create :user
   end
 
   describe "PUT 'update/:id'" do
-    it 'allows an user to be updated' do
+    it 'allows a user to be updated' do
       @attr = { username: 'new username' }
       request.headers['X-USER-TOKEN'] = @user.authentication_token
       put :update, id: @user.id, user: @attr, format: 'json'
@@ -21,7 +21,7 @@ describe Api::V1::UsersController do
       expect(@user.username).to eq @attr[:username]
     end
 
-    it 'should not allow to update an user (bad auth)' do
+    it 'should not allow to update a user (bad auth)' do
       @attr = { username: 'new username' }
       request.headers['X-USER-TOKEN'] = @user.authentication_token + 'wrong'
       put :update, id: @user.id, user: @attr, format: 'json'
@@ -30,7 +30,7 @@ describe Api::V1::UsersController do
       expect(@user.username).to_not eq @attr[:username]
     end
 
-    it 'should not allow to update an user (bad data)' do
+    it 'should not allow to update a user (bad data)' do
       @attr = { email: 'notanemail' }
       request.headers['X-USER-TOKEN'] = @user.authentication_token
       put :update, id: @user.id, user: @attr, format: 'json'
