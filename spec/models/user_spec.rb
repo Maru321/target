@@ -36,9 +36,10 @@ require 'spec_helper'
 describe User do
   it 'has a valid factory' do
     old_count = User.count
+
     expect(create(:user)).to be_valid
     create_list(:user, 9)
-    expect(User.count).to eq old_count + 10
+    expect(User.count).to eq(old_count + 10)
   end
 
   context 'when user was created with regular login' do
@@ -46,7 +47,7 @@ describe User do
     let(:full_name) { user.full_name }
 
     it 'returns the correct name' do
-      expect(full_name).to eq user.username
+      expect(full_name).to eq(user.username)
     end
   end
 
@@ -55,7 +56,7 @@ describe User do
     let(:full_name) { user.full_name }
 
     it 'returns the correct name' do
-      expect(full_name).to eq "#{user.first_name} #{user.last_name}"
+      expect(full_name).to eq("#{user.first_name} #{user.last_name}")
     end
   end
 end
