@@ -26,6 +26,10 @@ module Api
       def destroy
         # expire auth token
         current_user.invalidate_token
+
+        # sign out and avoid resetting the session
+        Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name)
+
         head :no_content
       end
 
