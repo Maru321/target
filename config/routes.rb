@@ -16,4 +16,6 @@ Railsroot::Application.routes.draw do
       resources :users, only: [:update]
     end
   end
+
+  resources :topics
 end
