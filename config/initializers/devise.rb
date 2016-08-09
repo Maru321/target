@@ -218,7 +218,12 @@ Devise.setup do |config|
   # should add them to the navigational formats lists.
   #
   # The "*/*" below is required to match Internet Explorer requests.
-  config.navigational_formats = ['*/*', :html, :json]
+  #
+  # Configuration to prevent Devise from checking in its
+  # require_no_authentication if the user is already logged in or not.
+  # This way the helper returns inmediately due to the json request not being a
+  # navigational format.
+  config.navigational_formats = ['/', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   config.sign_out_via = :delete

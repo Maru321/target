@@ -38,7 +38,7 @@ Example requests:
 Create User
 --------------
 ```
-curl -X POST -H "Accept: application/json"  -H "Content-Type: application/json"\ 
+curl -X POST -H "Accept: application/json"  -H "Content-Type: application/json"\
 http://localhost:3000/api/v1/users/ -d\
   '{ "user":
     {
