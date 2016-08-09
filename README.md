@@ -38,7 +38,7 @@ Example requests:
 Create User
 --------------
 ```
-curl -X POST -H "Accept: application/json"  -H "Content-Type: application/json"\ 
+curl -X POST -H "Accept: application/json"  -H "Content-Type: application/json"\
 http://localhost:3000/api/v1/users/ -d\
   '{ "user":
     {
@@ -54,7 +54,7 @@ Sign in User
 curl -X POST -H "Accept: application/json"  -H "Content-Type: application/json"\
 http://localhost:3000/api/v1/users/sign_in -d\
   '{ "user":
-    { 
+    {
       "email":"hello@hello.com",
       "password":"123456789"
     }
@@ -126,4 +126,12 @@ http://localhost:3000/api/v1/users/3 -d \
       "username":"juanito2"
     }
   }'
+```
+
+Get all topics
+--------------
+```
+curl -X GET -H "X-USER-TOKEN: f84KxyzgwsjDyoJjbwbJ"\
+-H "Accept: application/json"  -H "Content-Type: application/json"\
+http://localhost:3000/api/v1/topics
 ```
